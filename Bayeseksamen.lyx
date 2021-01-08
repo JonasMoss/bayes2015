@@ -1,0 +1,5682 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Bayesiansk eksamen 2015
+\end_layout
+
+\begin_layout Section*
+Oppgave 1
+\end_layout
+
+\begin_layout Subsection*
+a)
+\end_layout
+
+\begin_layout Standard
+I denne oppgaven antas det at forventingen, variansen og medianen til eksponensi
+alfordelinga er kjente.
+ La 
+\begin_inset Formula $X\sim\exp(\theta)$
+\end_inset
+
+ og sett 
+\begin_inset Formula $Y=X^{2}$
+\end_inset
+
+.
+ Da er 
+\begin_inset Formula $P(Y\leq y)=P(X\leq\sqrt{y})=1-\exp(-\theta\sqrt{y})$
+\end_inset
+
+.
+ Deriver og få tettheten vi er ute etter:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(y;\theta)=\frac{\theta}{2\sqrt{y}}e^{-\theta\sqrt{y}}.
+\]
+
+\end_inset
+
+Forventingen er 
+\begin_inset Formula $EX^{2}=\textrm{Var}X+(EX)^{2}=2\theta^{-2}$
+\end_inset
+
+, mens medianen finner vi ved å observere at 
+\begin_inset Formula $P(X^{2}\leq\alpha)=0.5$
+\end_inset
+
+ hvis og bare hvis 
+\begin_inset Formula $P(X\leq\sqrt{\alpha})=0.5$
+\end_inset
+
+, så 
+\begin_inset Formula $\textrm{median}(Y)=(\theta^{-1}\log2)^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection*
+b)
+\end_layout
+
+\begin_layout Standard
+Log likelihooden er 
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{i=1}^{n}l(y_{i};\theta) & = & n\log\theta-\sum_{i=1}^{n}\theta\sqrt{y_{i}}-\sum_{i=1}^{n}\log(2\sqrt{y_{i}}).
+\end{eqnarray*}
+
+\end_inset
+
+Når vi deriverer med hensyn på 
+\begin_inset Formula $\theta$
+\end_inset
+
+ og setter resultatet lik 
+\begin_inset Formula $0$
+\end_inset
+
+ ender vi opp med 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\widehat{\theta}=\frac{n}{\sum_{i=1}^{n}\sqrt{y_{i}}}.
+\]
+
+\end_inset
+
+Det er velkjent at 
+\begin_inset Formula $\sqrt{n}(\widehat{\theta}-\theta_{0})\stackrel{d}{\to}N(0,I^{-1})$
+\end_inset
+
+, hvor 
+\begin_inset Formula $I=\theta^{-2}$
+\end_inset
+
+ er Fisherinformasjonen.
+ Dessuten er 
+\begin_inset Formula $\sqrt{Y_{i}}\stackrel{i.i.d.}{\sim}\exp(\theta)$
+\end_inset
+
+, så 
+\begin_inset Formula $\sum_{i=1}^{n}\sqrt{Y_{i}}\sim\textrm{Gamma}(n,\theta)$
+\end_inset
+
+.
+ Dermed er 
+\begin_inset Formula $n^{-1}\sum_{i=1}^{n}\sqrt{Y_{i}}\sim\textrm{Gamma}(n,\frac{\theta_{0}}{n})$
+\end_inset
+
+, og følgelig 
+\begin_inset Formula $\widehat{\theta}\sim\textrm{Inv-Gamma}(n,\frac{n}{\theta_{0}})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection*
+c)
+\end_layout
+
+\begin_layout Standard
+Etter Bayes' regel er
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+p(\theta\mid y) & = & \left[\prod_{i=1}^{n}y_{i}^{-\frac{1}{2}}\right]2^{-n}\theta^{n}e^{-\theta\sum_{i=1}^{n}\sqrt{y_{i}}}\frac{b^{a}}{\Gamma(a)}\theta^{a-1}e^{-b\theta},\\
+ & \propto & \theta^{(a+n)-1}e^{-\theta(b+\sum_{i=1}^{n}\sqrt{y_{i}})},
+\end{eqnarray*}
+
+\end_inset
+
+hvor proporsjonaliteten er i 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Det følger at posterioren er fordelt som 
+\begin_inset Formula $\mbox{Gamma}(a+n,b+\sum_{i=1}^{n}\sqrt{y_{i}})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+d)
+\end_layout
+
+\begin_layout Standard
+Nå skal vi finne 
+\begin_inset Formula $p(y)=\frac{p(y\mid\theta)p(\theta)}{p(\theta\mid y)}$
+\end_inset
+
+.
+ Siden 
+\begin_inset Formula $p(\theta\mid y)$
+\end_inset
+
+ har proporsjonalitetskonstant 
+\begin_inset Formula $\frac{(b+\sqrt{y})^{a+1}}{\Gamma(a+1)}$
+\end_inset
+
+, og proporsjonalitetskonstanten (m.h.p 
+\begin_inset Formula $\theta$
+\end_inset
+
+) i 
+\begin_inset Formula $p(y\mid\theta)p(\theta)$
+\end_inset
+
+ er gitt ved 
+\begin_inset Formula $\frac{b^{a}}{\sqrt{y}2\Gamma(a)}$
+\end_inset
+
+, er 
+\begin_inset Formula 
+\begin{eqnarray*}
+p(y) & = & \frac{b^{a}}{\sqrt{y}2\Gamma(a)}\frac{\Gamma(a+1)}{(b+\sqrt{y})^{a+1}}\\
+ & = & \frac{ab^{a}}{2\sqrt{y}(b+\sqrt{y})^{a+1}}.
+\end{eqnarray*}
+
+\end_inset
+
+Her har vi brukt at 
+\begin_inset Formula $\Gamma(a+1)=a\Gamma(a)$
+\end_inset
+
+.
+ Når 
+\begin_inset Formula $(a,b)=(1,1)$
+\end_inset
+
+ får vi 
+\begin_inset Formula $p(y)=\frac{1}{2\sqrt{y}(1+\sqrt{y})^{2}}$
+\end_inset
+
+.
+ For å finne fordelingsfunksjonen bruker vi substitusjonen 
+\begin_inset Formula $u=\sqrt{y}$
+\end_inset
+
+, så 
+\begin_inset Formula $dy=2udu$
+\end_inset
+
+, og 
+\begin_inset Formula $F(y)=\int_{0}^{\sqrt{y}}\frac{1}{(1+u)^{2}}du=1-(1+\sqrt{y})^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+e)
+\end_layout
+
+\begin_layout Standard
+Med enkle manipulasjoner kan det vises at 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+ tilfredsstiller de oppgitte kvantilulikhetene hvis og bare hvis 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(\theta\leq1)=0.10\;\mbox{og}\; P(\theta\leq\sqrt{10})=0.90.
+\]
+
+\end_inset
+
+Den andre likhetheten følger av 
+\begin_inset Formula $\frac{2}{\theta^{2}}\leq0.2\iff\theta\geq\sqrt{10}$
+\end_inset
+
+, ettersom Gamma lever på 
+\begin_inset Formula $[0,\infty)$
+\end_inset
+
+.
+ Den andre likheten vises tilsvarende.
+ Nå kan vi bruke 
+\begin_inset Formula $\mathtt{R}$
+\end_inset
+
+ for å finne gode parameterestimater.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+> f = function(p) (qgamma(0.1,p[1],p[2])-1)^2 +
+\end_layout
+
+\begin_layout LyX-Code
+>                 (qgamma(0.9,p[1],p[2])-sqrt(10))^2
+\end_layout
+
+\begin_layout LyX-Code
+> nlm(f,c(4,4))$estimate
+\end_layout
+
+\begin_layout LyX-Code
+[1] 5.315377 2.656497
+\end_layout
+
+\begin_layout Standard
+I resten av oppgaven bruker vi verdiene 
+\begin_inset Formula $a=5.31$
+\end_inset
+
+ og 
+\begin_inset Formula $b=2.66$
+\end_inset
+
+.
+ Denne prioren har topppunkt i 
+\begin_inset Formula $1.62$
+\end_inset
+
+, snitt 
+\begin_inset Formula $\approx2$
+\end_inset
+
+ og 
+\begin_inset Formula $.9$
+\end_inset
+
+-kvantil i 
+\begin_inset Formula $\approx4.5$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection*
+f)
+\end_layout
+
+\begin_layout Standard
+Sannsynlighetsmaksimatorestimatet er 
+\begin_inset Formula $\widehat{\theta}=0.856$
+\end_inset
+
+.
+ Siden forventinga til en 
+\begin_inset Formula $\mbox{Gamma}(a,b)$
+\end_inset
+
+-fordelt variabel er 
+\begin_inset Formula $\frac{a}{b}$
+\end_inset
+
+, følger det av resultatet 
+\begin_inset Formula $p(\theta\mid y)=\Gamma(a+n,b+\sum_{i=1}^{n}\sqrt{y_{i}})$
+\end_inset
+
+ at posteriorsnittet er 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{5.31+12}{2.66+14.02}=1.04.
+\]
+
+\end_inset
+
+Posteriorsnittet er høyere enn ML-estimatet, da prioren legger mye vekt
+ til høyre for 
+\begin_inset Formula $\widehat{\theta}=0.856$
+\end_inset
+
+.
+ Posteriortopppunktet er 
+\begin_inset Formula $\frac{a-1}{b}=0.978$
+\end_inset
+
+, som er litt nærmere ML-estimatet.
+\end_layout
+
+\begin_layout Subsection*
+g)
+\end_layout
+
+\begin_layout Standard
+De late Bayesianerne bruker approksimasjonen 
+\begin_inset Formula $p(\theta\mid y)=N(\theta^{\pi},(I^{\pi})^{-1})$
+\end_inset
+
+, hvor 
+\begin_inset Formula $\theta^{\pi}$
+\end_inset
+
+ er posteriortoppunktet og 
+\begin_inset Formula $I^{\pi}$
+\end_inset
+
+ er den generaliserte Fisherinformasjonen.
+ Nå kan vi enten være ekstra late, og anta at 
+\begin_inset Formula $\pi$
+\end_inset
+
+ er flat, som gir oss 
+\begin_inset Formula $I=\frac{d^{2}}{d\theta^{2}}=\theta^{-2}$
+\end_inset
+
+, eller være passe late og få 
+\begin_inset Formula $I^{\pi}=a\theta^{-2}$
+\end_inset
+
+.
+ Siden 
+\begin_inset Formula $\frac{d^{2}}{d\theta^{2}}\log f(\theta)=\theta^{-2}$
+\end_inset
+
+, 
+\begin_inset Formula $\frac{d^{2}}{d\theta^{2}}\log\left[p(\theta\mid\mathbf{y})\right]=-\theta^{-2}(a+n-2)$
+\end_inset
+
+ og 
+\begin_inset Formula $\widehat{\theta}=0.978$
+\end_inset
+
+ får vi henholdsvis 
+\begin_inset Formula $N(0.978,\frac{1}{n}0.978^{2})$
+\end_inset
+
+ og 
+\begin_inset Formula $N(0.978,\frac{1}{a+n-2}0.978^{2})$
+\end_inset
+
+.
+ Begge approksimasjonene, som kan ses i Figur 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:(1) Posterior"
+
+\end_inset
+
+, ser ut til å funke bra.
+ Ikke overraskende funker den late approksimasjonen bedre enn den ekstra
+ late approksimasjonen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Bayeseksamen/NormalPosterior.pdf
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:(1) Posterior"
+
+\end_inset
+
+Plot av posterioren til 
+\begin_inset Formula $\theta$
+\end_inset
+
+ sammen med late og esktra late varianter.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+h) 
+\end_layout
+
+\begin_layout Standard
+La oss finne den posteriore prediktive tettheten i 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+E_{\theta\mid\mathbf{y}}(p(y\mid\theta)) & = & \int_{0}^{\infty}p(y\mid\theta)p(\theta\mid\mathbf{y})d\theta,\\
+ & = & \int_{0}^{\infty}\frac{\theta}{2\sqrt{y}}e^{-\theta\sqrt{y}}\gamma(\theta)d\theta.
+\end{eqnarray*}
+
+\end_inset
+
+Her er 
+\begin_inset Formula $\gamma(\theta)$
+\end_inset
+
+ tettheten til 
+\begin_inset Formula $\mbox{Gamma}(\alpha,\beta)$
+\end_inset
+
+, hvor 
+\begin_inset Formula $\alpha=a+n$
+\end_inset
+
+ og
+\begin_inset Formula $\beta=b+\sum_{i=1}^{n}\sqrt{y_{i}}$
+\end_inset
+
+ .
+ Integranden kan identifiseres som 
+\begin_inset Formula 
+\[
+\frac{1}{2\sqrt{y}}\frac{\Gamma(\alpha+1)\beta^{\alpha}}{\Gamma(\alpha)\left(\beta+\sqrt{y}\right)^{\alpha+1}}\gamma(\theta),
+\]
+
+\end_inset
+
+hvor 
+\begin_inset Formula $\gamma'(\theta)$
+\end_inset
+
+ er tettheten til 
+\begin_inset Formula $\mbox{Gamma}(\alpha+1,\beta+\sqrt{y})$
+\end_inset
+
+.
+ Bruker vi 
+\begin_inset Formula $\Gamma(x+1)=x\Gamma(x)$
+\end_inset
+
+ og 
+\begin_inset Formula $\int_{0}^{\infty}\gamma'(\theta)d\theta=1$
+\end_inset
+
+ får vi
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E_{\theta\mid\mathbf{y}}(p(y\mid\theta))=\frac{\alpha}{2\sqrt{y}}\frac{\beta^{\alpha}}{\left(\beta+\sqrt{y}\right)^{\alpha+1}}.
+\]
+
+\end_inset
+
+For å finne fordelingsfunksjonen bruker vi substitusjonen 
+\begin_inset Formula $u=\sqrt{y}$
+\end_inset
+
+, som gir oss integralet
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{0}^{\sqrt{y}}\frac{\alpha\beta^{\alpha}}{(\beta+u)^{\alpha+1}}du & = & \left[-\frac{\beta^{\alpha}}{(\beta+u)^{\alpha}}\right]_{0}^{\sqrt{y}},\\
+ & = & 1-\frac{\beta^{\alpha}}{(\beta+\sqrt{y})^{\alpha}}.
+\end{eqnarray*}
+
+\end_inset
+
+Husk at 
+\begin_inset Formula $F(\theta)=1-e^{-\theta\sqrt{y}}$
+\end_inset
+
+, at ML-estimatet til 
+\begin_inset Formula $\theta$
+\end_inset
+
+ er 
+\begin_inset Formula $\widehat{\theta}_{ML}=n(\sum_{i=1}^{n}\sqrt{y})^{-1}$
+\end_inset
+
+ og at 
+\begin_inset Formula $e^{-x}=\lim_{n\to\infty}(1+\frac{x}{n})^{-n}$
+\end_inset
+
+.
+ Vi skriver om 
+\begin_inset Formula $\frac{\beta^{\alpha}}{(\beta+\sqrt{y})^{\alpha}}$
+\end_inset
+
+ til 
+\begin_inset Formula $\left(1+\frac{\sqrt{y}}{\beta}\right)^{-\alpha}$
+\end_inset
+
+ og bytter tilbake 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ og 
+\begin_inset Formula $\beta$
+\end_inset
+
+ for å få
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\left(1+\frac{\sqrt{y}}{n}\frac{n}{b+\sum_{i=1}^{n}\sqrt{y_{i}}}\right)^{-(a+n)} & = & \left(1+\frac{\sqrt{y}}{n}(\frac{b}{n}+1/\widehat{\theta}_{ML})^{-1}\right)^{-(a+n)},\\
+ & \approx & \exp(-\sqrt{y}\widehat{\theta}_{ML}).
+\end{eqnarray*}
+
+\end_inset
+
+Hvor 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\approx$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ krever at 
+\begin_inset Formula $n$
+\end_inset
+
+ er veldig stor.
+ Det er mer på grunn av tregheten i konvergensen 
+\begin_inset Formula $(1+\frac{x}{n})^{-n}\to\exp(-x)$
+\end_inset
+
+ enn på grunn av prior-parameterne 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+.
+ Dette kan en se i haleatferden til fordelinga.
+ La 
+\begin_inset Formula $a>0$
+\end_inset
+
+ og 
+\begin_inset Formula $b>0$
+\end_inset
+
+ være gitt, og betrakt 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{0}^{\infty}\frac{\alpha y^{k}}{2\sqrt{y}}\frac{\beta^{\alpha}}{\left(\beta+\sqrt{y}\right)^{\alpha+1}}dy,
+\]
+
+\end_inset
+
+som er det 
+\begin_inset Formula $k$
+\end_inset
+
+-te momentet til 
+\begin_inset Formula $E_{\theta\mid\mathbf{y}}(p(y\mid\theta))$
+\end_inset
+
+.
+ Bruk samme substitusjon som over for å få
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{0}^{\infty}u^{2k}\frac{\alpha\beta^{\alpha}}{\left(\beta+u\right)^{\alpha+1}}dy.
+\]
+
+\end_inset
+
+Anta 
+\begin_inset Formula $u\gg\beta$
+\end_inset
+
+, slik at 
+\begin_inset Formula $u^{\alpha+1}$
+\end_inset
+
+ dominerer de andre termene i 
+\begin_inset Formula $\left(\beta+u\right)^{\alpha+1}$
+\end_inset
+
+ fullstendig.
+ For slike 
+\begin_inset Formula $u$
+\end_inset
+
+ er integralet omtrentlig proporsjonalt med
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{u^{2k}}{u^{\alpha+1}}=u^{2k-a-n-1}.
+\]
+
+\end_inset
+
+Integralet av denne termen diverger hvis og bare hvis om 
+\begin_inset Formula $2k>a+n$
+\end_inset
+
+, noe som også gjelder for vårt opprinnelige integral.
+ Dette er i skarp kontrast til eksponensialfordelinga, som selvfølgelig
+ har endelige momenter for enhver 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Momentatferden kun avhengig av 
+\begin_inset Formula $a$
+\end_inset
+
+ og 
+\begin_inset Formula $n$
+\end_inset
+
+, ikke de faktiske observasjonene i 
+\begin_inset Formula $\mathbf{y}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Siden fordelingsfunksjonen er såpass fin, er det enkelt å finne kvantilfunksjone
+n: Sett 
+\begin_inset Formula $1-\frac{\beta^{\alpha}}{(\beta+\sqrt{y})^{\alpha}}=z$
+\end_inset
+
+, løs for 
+\begin_inset Formula $y$
+\end_inset
+
+, og end opp med 
+\begin_inset Formula $y=\beta^{2}(1-(1-z)^{-\frac{1}{\alpha}})^{2}$
+\end_inset
+
+.
+ Oppsummert er
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+h(y) & = & \frac{\alpha}{2\sqrt{y}}\frac{\beta^{\alpha}}{\left(\beta+\sqrt{y}\right)^{\alpha+1}},\\
+H(y) & = & 1-\left(1+\frac{\sqrt{y}}{\beta}\right)^{-\alpha},\\
+Q(y) & = & \beta^{2}(1-(1-z)^{-\frac{1}{\alpha}})^{2},
+\end{eqnarray*}
+
+\end_inset
+
+hvor 
+\begin_inset Formula $h(y)=E_{\theta\mid\mathbf{y}}(p(y\mid\theta))$
+\end_inset
+
+, 
+\begin_inset Formula $H$
+\end_inset
+
+ den tilhørende fordelingsfunksjonen og 
+\begin_inset Formula $Q$
+\end_inset
+
+ den tilhørende kvantilfunksjonen.
+ Med den siste formelen er det enkelt å finne kvantilene det ble spurt om
+ i oppgaven, som vi putter i Tabell 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:(1) Posteriorprediktivkvantiler"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(5.31,2.66)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(4,4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\exp(\widehat{\theta}_{ML})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0104
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0142
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.1231
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.4637
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.6363
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.8096
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.9$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+5.6233
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+7.7765
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2.6895
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:(1) Posteriorprediktivkvantiler"
+
+\end_inset
+
+Kvantiler for 
+\begin_inset Formula $E_{\theta\mid\mathbf{y}}(p(y\mid\theta))$
+\end_inset
+
+ med 
+\begin_inset Formula $(a,b)=(5.31,2.66)$
+\end_inset
+
+, 
+\begin_inset Formula $(a,b)=(4,4)$
+\end_inset
+
+ og fordelinga 
+\begin_inset Formula $\exp(\widehat{\theta}_{ML})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi viser tettheten, fordelingsfunksjonen og kvantilfunksjonen for det aktuelle
+ datasettet i Figur 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:(1) Posterior predictive distribution"
+
+\end_inset
+
+.
+ I tillegg til 
+\begin_inset Formula $(a,b)=(5.31,2.66)$
+\end_inset
+
+ illustrer vi valget 
+\begin_inset Formula $(a,b)=(4,4)$
+\end_inset
+
+.
+ Dessuten viser vi tettheten 
+\begin_inset Formula $\exp(\widehat{\theta}_{ML})$
+\end_inset
+
+.
+ Som allerede indikert har tettheten 
+\begin_inset Formula $\exp(\widehat{\theta}_{ML})$
+\end_inset
+
+ seriøst tynnere haler enn 
+\begin_inset Formula $E_{\theta\mid\mathbf{y}}(p(y\mid\theta))$
+\end_inset
+
+, noe som kan forklares ved at den ikke tar hensyn til usikkerheten i estimatet
+ 
+\begin_inset Formula $\widehat{\theta}_{ML}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Bayeseksamen/PosteriorPredictiveDensity.pdf
+	scale 35
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Bayeseksamen/PosteriorPredictiveDistribution.pdf
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Bayeseksamen/PosteriorPredictiveQuantile.pdf
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:(1) Posterior predictive distribution"
+
+\end_inset
+
+(venstre) Posterior prediktiv tetthet til 
+\begin_inset Formula $y_{13}$
+\end_inset
+
+, den røde linja kan knapt ses.
+ (høyre) Kumulativ tetthet.
+ Kvantilene 
+\begin_inset Formula $0.1$
+\end_inset
+
+, 
+\begin_inset Formula $0.5$
+\end_inset
+
+ og 
+\begin_inset Formula $0.9$
+\end_inset
+
+ som hører til 
+\begin_inset Formula $(a,b)=(5.31,2.66)$
+\end_inset
+
+ er markert.
+ (bunn) Kvantilfunksjonen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Oppgave 2
+\end_layout
+
+\begin_layout Subsection*
+a)
+\end_layout
+
+\begin_layout Standard
+La 
+\begin_inset Formula $\mathbf{y}=y_{1},...,y_{n}$
+\end_inset
+
+ i.i.d.
+ observasjoner fra 
+\begin_inset Formula $f(\theta)$
+\end_inset
+
+.
+ Posterioren 
+\begin_inset Formula $p(\theta\mid\mathbf{y})$
+\end_inset
+
+ er proporsjonal med 
+\begin_inset Formula 
+\[
+\prod_{i=1}^{n}f(y\mid\theta)\pi(\theta)\propto\theta^{a+n-1}(1-\theta)^{b+\left\langle \mathbf{y},\mathbf{1}\right\rangle -n-1},
+\]
+
+\end_inset
+
+så 
+\begin_inset Formula $p(\theta\mid\mathbf{y})\sim\mbox{Beta}(a+n,b+\left\langle \mathbf{y},1\right\rangle -n)$
+\end_inset
+
+.
+ Det følger at 
+\begin_inset Formula $p(\theta\mid y)=\mbox{Beta}(a+1,b+y-1)$
+\end_inset
+
+.
+ Siden forventinga til 
+\begin_inset Formula $\mbox{Beta}(\alpha,\beta)$
+\end_inset
+
+ er 
+\begin_inset Formula $\frac{\alpha}{\alpha+\beta}$
+\end_inset
+
+, er posterior forventing lik 
+\begin_inset Formula $\frac{a+n}{a+b+\left\langle \mathbf{y},1\right\rangle }$
+\end_inset
+
+, mens posterior topppunkt er 
+\begin_inset Formula $\frac{a+n-1}{a+b+\left\langle \mathbf{y},1\right\rangle -2}$
+\end_inset
+
+.
+ Da 
+\begin_inset Formula $\log\prod_{i=1}^{n}f(y;\theta)=\sum_{i=1}^{n}\left[(y_{i}-1)\log(1-\theta)\right]+n\log(\theta)$
+\end_inset
+
+ har derivert 
+\begin_inset Formula $-\sum_{i=1}^{n}\frac{y_{i}-1}{1-\theta}+\frac{n}{\theta}$
+\end_inset
+
+, er ML-estimatet lik 
+\begin_inset Formula $\widehat{\theta}_{ML}=\frac{n}{\left\langle \mathbf{y},1\right\rangle }$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+b)
+\end_layout
+
+\begin_layout Standard
+Først beregner vi marginalfordelinga 
+\begin_inset Formula $p(\mathbf{y})$
+\end_inset
+
+.
+ Vi bruker proporsjonaliteten 
+\begin_inset Formula $p(\mathbf{y}\mid\theta)p(\theta)\propto p(\theta\mid\mathbf{y})$
+\end_inset
+
+ for å finne
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+p(\mathbf{y}) & = & \frac{p(\mathbf{y}\mid\theta)p(\theta)}{p(\theta\mid\mathbf{y})},\nonumber \\
+ & = & \frac{\mbox{B}(a+n,b+\left\langle \mathbf{y},1\right\rangle -n)}{\mbox{B}(a,b)}.\label{eq:(2) ubetinget fordeling}
+\end{eqnarray}
+
+\end_inset
+
+Her dukker betafunksjonen 
+\begin_inset Formula $\mbox{B}(x,y)=\frac{\Gamma(x+y)}{\Gamma(x)\Gamma(y)}$
+\end_inset
+
+ opp ettersom den er proporsjonalitetskonstant i betafordelingen.
+ Det er kjent at 
+\begin_inset Formula $\mathcal{U}(0,1)=\mbox{Beta}(1,1)$
+\end_inset
+
+, så 
+\begin_inset Formula $p(\theta\mid y)\sim\mbox{Beta}(2,y)$
+\end_inset
+
+ i dette tilfellet.
+ Siden 
+\begin_inset Formula $\Gamma(n+1)=n!$
+\end_inset
+
+ er den ubetingede fordelinga 
+\begin_inset Formula $p(y)$
+\end_inset
+
+ gitt ved
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{f(y\mid\theta)\pi(\theta)}{p(\theta\mid y)} & = & \frac{\Gamma(a+b)\Gamma(a+1)\Gamma(b+y-1)}{\Gamma(a)\Gamma(b)\Gamma(a+b+y)},\\
+ & = & \frac{(y-1)!}{(y+1)!}=\frac{1}{y(y+1)}.
+\end{eqnarray*}
+
+\end_inset
+
+Det er kult at dette er pmf.
+ I det andre spørsmålet er vi ute etter 
+\begin_inset Formula $\sum_{i=1}^{\infty}yp(y)$
+\end_inset
+
+.
+ Denne summen divergerer, ettersom 
+\begin_inset Formula $\sum_{y=1}^{\infty}\frac{1}{y+1}=\infty$
+\end_inset
+
+.
+ Forventet antall knips er dermed uendelig.
+ 
+\end_layout
+
+\begin_layout Subsection*
+c)
+\end_layout
+
+\begin_layout Standard
+Vi finner Fisherinformasjonen til 
+\begin_inset Formula $f(y;\theta)$
+\end_inset
+
+ via
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d^{2}}{d\theta^{2}}((y-1)\log(1-\theta)+\log(\theta))=-\frac{y-1}{(1-\theta)^{2}}-\frac{1}{\theta^{2}}.
+\]
+
+\end_inset
+
+Dermed er 
+\begin_inset Formula $E\left[-\frac{d^{2}}{d\theta^{2}}l\right]=\frac{1}{\theta(1-\theta)^{2}}-\frac{1}{(1-\theta)^{2}}+\frac{1}{\theta^{2}}$
+\end_inset
+
+, som forenklet blir 
+\begin_inset Formula $\frac{\theta-\theta^{2}+(1-\theta^{2})}{\theta^{2}(1-\theta)^{2}}=\theta^{-2}(1-\theta)^{-1}$
+\end_inset
+
+.
+ Dermed er Jeffreys prior proporsjonal med 
+\begin_inset Formula $\mbox{Beta}(0,\frac{1}{2})$
+\end_inset
+
+, som ikke finnes, da 
+\begin_inset Formula $\theta^{-1}$
+\end_inset
+
+ vokser for fort når 
+\begin_inset Formula $\theta\to0$
+\end_inset
+
+.
+ Prioren legger altså ekstremt stor vekt på små 
+\begin_inset Formula $\theta$
+\end_inset
+
+-verdier og rimelg stor vekt på store 
+\begin_inset Formula $\theta$
+\end_inset
+
+-verdier.
+ Intuitivt er dette på grunn av asymmetrien i 
+\begin_inset Formula $y$
+\end_inset
+
+: Når 
+\begin_inset Formula $\theta$
+\end_inset
+
+ er mellomstor vil en typisk observasjon ikke inneholde mye informasjon
+ om 
+\begin_inset Formula $\theta$
+\end_inset
+
+, ettersom den kan være så mye forskjellig.
+ Når 
+\begin_inset Formula $\theta$
+\end_inset
+
+ er stor vil en typisk observajon inneholde mye informasjon 
+\begin_inset Formula $\theta$
+\end_inset
+
+, da 
+\begin_inset Formula $y$
+\end_inset
+
+ typisk er 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Men når 
+\begin_inset Formula $\theta$
+\end_inset
+
+ er liten får vi kjempemye informasjon om 
+\begin_inset Formula $\theta$
+\end_inset
+
+, ettersom 
+\begin_inset Formula $y$
+\end_inset
+
+-en kan være veldig stor.
+ 
+\end_layout
+
+\begin_layout Standard
+Posterioren er proporsjonal med 
+\begin_inset Formula $(1-\theta)^{y-\frac{1}{2}-1}$
+\end_inset
+
+, som er 
+\begin_inset Formula $\mbox{Beta}(1,y+\frac{1}{2}$
+\end_inset
+
+)-fordelt.
+ Denne har forventing i 
+\begin_inset Formula $(y+\frac{3}{2})^{-1}$
+\end_inset
+
+, som er en mindre verdi enn ML-estimatet 
+\begin_inset Formula $y^{-1}$
+\end_inset
+
+.
+ Dette veier opp for en slags 
+\begin_inset Quotes eld
+\end_inset
+
+bias
+\begin_inset Quotes erd
+\end_inset
+
+ når 
+\begin_inset Formula $y=1$
+\end_inset
+
+, hvor ML er ganske ekstrem og sier at 
+\begin_inset Formula $1$
+\end_inset
+
+ er det beste estimatet, noe som er litt søkt.
+ Om vi bruker posteriorsnittet som estimat gjør det bare noe når 
+\begin_inset Formula $y$
+\end_inset
+
+ er liten, altså.
+ Posterioren er forskjøvet mot venstre, ettersom prioren var det.
+\end_layout
+
+\begin_layout Subsection*
+d)
+\end_layout
+
+\begin_layout Standard
+Vi har allerede vist at 
+\begin_inset Formula $p(\theta\mid y)\sim\mbox{Beta}(2,y)$
+\end_inset
+
+ når 
+\begin_inset Formula $(a,b)=(1,1)$
+\end_inset
+
+.
+ Siden forventinga til Beta-fordelinga er gitt ved 
+\begin_inset Formula $\frac{a}{a+b}$
+\end_inset
+
+, er posterior forventing lik 
+\begin_inset Formula $\frac{2}{2+y}$
+\end_inset
+
+.
+ Vi simulerer kvardatrisikoen i 
+\begin_inset Formula $\mathtt{R}$
+\end_inset
+
+ og presenterer kurven i figur 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Kvadratrisiko"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Bayeseksamen/Risiki.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Kvadratrisiko"
+
+\end_inset
+
+Sammenligning av kvadratrisikoen for de tre forskjellige estimatorne.
+ ML er bedre enn uniform Bayes når 
+\begin_inset Formula $\theta>0.84$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+e)
+\end_layout
+
+\begin_layout Standard
+Det følger av 
+\begin_inset Formula $p(\theta\mid y_{i})\sim\mbox{Beta}(a+1,b+y_{i}-1)$
+\end_inset
+
+ og at forventinga til Beta
+\begin_inset Formula $(a,b)$
+\end_inset
+
+ er 
+\begin_inset Formula $\frac{a}{a+b}$
+\end_inset
+
+ at posterior forventing er 
+\begin_inset Formula $\frac{a+1}{a+b+y_{i}}$
+\end_inset
+
+.
+ Dette er Bayesestimatoren under kvadrattapet.
+\end_layout
+
+\begin_layout Subsection*
+f)
+\end_layout
+
+\begin_layout Standard
+Vi har allerede vist at 
+\begin_inset Formula $p(\mathbf{y})=\frac{\Gamma(a+b)\Gamma(a+n)\Gamma(b+\left\langle \mathbf{y},1\right\rangle -n)}{\Gamma(a)\Gamma(b)\Gamma(a+b+\left\langle \mathbf{y},1\right\rangle )}$
+\end_inset
+
+, se likning 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:(2) ubetinget fordeling"
+
+\end_inset
+
+.
+ Nå bruker vi 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+-egenskapen 
+\begin_inset Formula $\Gamma(z+1)=z\Gamma(z)$
+\end_inset
+
+ for alle 
+\begin_inset Formula $z$
+\end_inset
+
+ og får
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(y)=a\frac{\Gamma(a+b)\Gamma(b+y-1)}{\Gamma(b)\Gamma(a+b+y)}.
+\]
+
+\end_inset
+
+For å finne parameterestimatene bruker vi formuleringen 
+\begin_inset Formula $\frac{\mbox{B}(a+1,b+y-1)}{\mbox{B}(a,b)}$
+\end_inset
+
+, sammen med 
+\begin_inset Formula $\mathtt{R}$
+\end_inset
+
+-koden:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset listings
+lstparams "language=R,numbers=left"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+ys = c(1, 1, 2, 2, 2,  2,  2,  3,  3,  3, 
+\end_layout
+
+\begin_layout LyX-Code
+
+       3, 3, 5, 6, 6, 14, 15, 15, 20, 75)
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+llik = function(p,ys){   
+\end_layout
+
+\begin_layout LyX-Code
+
+  a = p[1]   
+\end_layout
+
+\begin_layout LyX-Code
+
+  b = p[2]   
+\end_layout
+
+\begin_layout LyX-Code
+
+  sum(lbeta(a+n,b+ys-n) - lbeta(a,b)) 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+ab = nlm(function(p) -llik(p,ys),p=c(1,1))$estimate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dette gir oss parameterestimater på omtrent 
+\begin_inset Formula $a=1.71$
+\end_inset
+
+ og 
+\begin_inset Formula $b=6.35$
+\end_inset
+
+.
+ Dermed er posterior forventing lik 
+\begin_inset Formula $\frac{1.71}{6.35+y_{i}}.$
+\end_inset
+
+ De resulterende verdiene er i tabell 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:(2) stor tabell"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+g)
+\end_layout
+
+\begin_layout Standard
+I likning 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:(2) ubetinget fordeling"
+
+\end_inset
+
+ har vi tettheten til 
+\begin_inset Formula $p(\mathbf{y}\mid a,b)$
+\end_inset
+
+.
+ Vi kan bruke denne til å finne 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(a,b\mid\mathbf{y})\propto\prod_{i=1}^{n}\frac{\mbox{B}(a+1,b+y_{i}-1)}{\mbox{B}(a,b)}1_{[0,100]}(a)1_{[0,100]}(b).
+\]
+
+\end_inset
+
+Det er en smal sak å sample fra denne fordelinga om vi bruker en enkel variant
+ av 
+\emph on
+importance sampling
+\emph default
+.
+ Vi trekker 
+\begin_inset Formula $N$
+\end_inset
+
+ observasjoner fra 
+\begin_inset Formula $\mathcal{U}([0,100]\times[0,100])$
+\end_inset
+
+, beregner 
+\begin_inset Formula $\prod_{i=1}^{n}\frac{\mbox{B}(a+1,b+y_{i}-1)}{\mbox{B}(a,b)}$
+\end_inset
+
+ for hver av dem, og avslutter med å dele på snittet av alle observasjonene.
+ Da har vi en sannsynlighet forbundet med hver observasjon 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+, som vi kan bruke til å beregne de ønskede verdiene (i tabell 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:(2) hyperparametere"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Snitt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.43
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+44.5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.41
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+28.1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrelasjon
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.894
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:(2) hyperparametere"
+
+\end_inset
+
+Tabell over posterior snitt, standardavvik og korrelasjon.
+ 
+\begin_inset Formula $N=100000000$
+\end_inset
+
+.
+ De store verdiene på 
+\begin_inset Formula $a,b$
+\end_inset
+
+ kan oversettes til spissere priorer enn det vi fikk for 
+\begin_inset Formula $a=1.71$
+\end_inset
+
+ og 
+\begin_inset Formula $b=6.35$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+h)
+\end_layout
+
+\begin_layout Standard
+La 
+\begin_inset Formula $b'(x;a,b)$
+\end_inset
+
+ være betatettheten med parametere 
+\begin_inset Formula $a,b$
+\end_inset
+
+.
+ Siden
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+p(\theta_{1},\theta_{2},...,\theta_{n}\mid\mathbf{y},a,b) & = & \prod_{i=1}^{n}b'(\theta_{i};a+1,b+y_{i}-1)\\
+ & = & \prod_{i=1}^{n}p(\theta_{i}\mid y_{i},a,b),
+\end{eqnarray*}
+
+\end_inset
+
+er 
+\begin_inset Formula $p(\theta_{i}\mid\mathbf{y},a,b)=p(\theta_{i}\mid y_{i},a,b)$
+\end_inset
+
+.
+ Dette er intuitivt opplagt, ettersom all informasjonen 
+\begin_inset Formula $y_{j},\, j\neq i$
+\end_inset
+
+ kan gi om 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+ er informasjon om hyperparameterne 
+\begin_inset Formula $a,b$
+\end_inset
+
+.
+ Nå bruker vi
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+p(\theta_{i}\mid\mathbf{y}) & = & \int p(\theta_{i}\mid\mathbf{y},a,b)p(a,b\mid\mathbf{y})dadb\\
+ & = & \int p(\theta_{i}\mid y_{i},a,b)p(a,b\mid\mathbf{y})dadb,
+\end{eqnarray*}
+
+\end_inset
+
+som gjør det mulig å finne de ønskede kvantilene ved å bruke verdiene fra
+ forrige oppgave.
+ Verdiene presenteres i tabell 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:(2) stor tabell"
+
+\end_inset
+
+.
+ Under den hierarkiske modelleringa får vi større 
+\begin_inset Quotes eld
+\end_inset
+
+shrinkage
+\begin_inset Quotes erd
+\end_inset
+
+ på parameterne enn i empirisk bayes.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="7">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\widehat{\theta_{i}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{i}^{*}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{i}^{0.05}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{i}^{0.50}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{i}^{0.95}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.299
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.077
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.164
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.36
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.299
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.077
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.164
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.36
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.27
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.075
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.337
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.27
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.075
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.337
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.27
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.075
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.337
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.27
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.075
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.337
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.27
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.075
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.337
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.333
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.245
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.073
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.156
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.319
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.333
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.245
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.073
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.156
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.319
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.333
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.245
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.073
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.156
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.319
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="7">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\widehat{\theta_{i}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{i}^{*}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{i}^{0.05}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{i}^{0.50}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{i}^{0.95}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.333
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.245
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.073
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.156
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.319
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.333
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.245
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.073
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.156
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.319
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.208
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.068
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.148
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.29
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.167
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.193
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.067
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.145
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.279
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.167
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.193
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.067
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.145
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.279
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.071
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.123
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.053
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.123
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.221
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.067
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.118
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.052
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.121
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.216
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.067
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.118
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.052
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.121
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.216
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.097
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.046
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.111
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.197
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.013
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.033
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.019
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.059
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.114
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:(2) stor tabell"
+
+\end_inset
+
+Tabell over verdier.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Oppgave 3
+\end_layout
+
+\begin_layout Subsection*
+a)
+\end_layout
+
+\begin_layout Standard
+Tettheten er gitt ved
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(\mathbf{y}\mid\tau)=\prod_{i=1}^{\tau}f_{L}(y_{i})\prod_{i=\tau+1}^{n}f_{R}(y_{i}),
+\]
+
+\end_inset
+
+så posterioren er 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(\tau\mid\mathbf{y})=C_{\mathbf{y}}\prod_{i=1}^{\tau}f_{L}(y_{i})\prod_{i=\tau+1}^{n}f_{R}(y_{i}),
+\]
+
+\end_inset
+
+hvor 
+\begin_inset Formula $C_{\mathbf{y}}=\sum_{\tau=1}^{n}\prod_{i=1}^{\tau}f_{L}(y_{i})\prod_{i=\tau+1}^{n}f_{R}(y_{i})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection*
+c) 
+\end_layout
+
+\begin_layout Standard
+Legg til.
+ ####
+\end_layout
+
+\begin_layout Subsection*
+d)
+\end_layout
+
+\begin_layout Standard
+Log likelihooden er 
+\begin_inset Formula $\sum_{i=1}^{\tau}\log f_{L}(y_{i};\theta_{L})+\sum_{i=\tau+1}^{n}\log f_{R}(y_{i};\theta_{R})$
+\end_inset
+
+.
+ En naiv men okay måte å maksimere denne på er iterere gjennom alle lovlige
+ verdier av 
+\begin_inset Formula $\tau,$
+\end_inset
+
+ beregne log likelihooden på hver side ved å plugge in 
+\begin_inset Formula $\widehat{\theta_{L}}=\tau^{-1}\sum_{i=1}^{\tau}y_{i}$
+\end_inset
+
+ og 
+\begin_inset Formula $\widehat{\theta_{R}}=(n-\tau)^{-1}\sum_{i=\tau+1}^{n}y_{i}$
+\end_inset
+
+.
+ Dette er enkelt å programmere i 
+\begin_inset Formula $\mathtt{R}$
+\end_inset
+
+.
+ Løsningen blir 
+\begin_inset Formula $(\tau,\theta_{L},\theta_{R})=(22,3.05,0.896)$
+\end_inset
+
+.
+ I figur 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:(3) log likelihood"
+
+\end_inset
+
+ illusteres det hvordan log likelihood ser ut, i tillegg til hvordan ML-estimate
+ne 
+\begin_inset Formula $\widehat{\theta_{L}}$
+\end_inset
+
+ og 
+\begin_inset Formula $\widehat{\theta_{R}}$
+\end_inset
+
+ endres ettersom bruddpunktet 
+\begin_inset Formula $\tau$
+\end_inset
+
+ forandres.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Bayeseksamen/TauLoglikelihood.pdf
+	scale 35
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Bayeseksamen/ThetaLThetaR.pdf
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:(3) log likelihood"
+
+\end_inset
+
+(venstre) Plot over max-log likelihooden for ulike valg av 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+ (høyre) Her kan vi se hvordan 
+\begin_inset Formula $\theta_{L}$
+\end_inset
+
+ og 
+\begin_inset Formula $\theta_{R}$
+\end_inset
+
+ forandrer seg ettersom 
+\begin_inset Formula $\tau$
+\end_inset
+
+ forandres.
+ Legg merke til at 
+\begin_inset Formula $\theta_{L}>\theta_{R}$
+\end_inset
+
+ for alle valg av 
+\begin_inset Formula $\tau$
+\end_inset
+
+, noe som støtter hypotesen om at det finnes ett bruddpunkt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+e)
+\end_layout
+
+\begin_layout Standard
+Via kjerneregelen for kondisjonering får vi
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(\tau,\theta_{L},\theta_{R},\mathbf{y})=p(\mathbf{y}\mid\tau,\theta_{L},\theta_{R})p(\tau,\theta_{L},\theta_{R}).
+\]
+
+\end_inset
+
+Leddet 
+\begin_inset Formula $p(\mathbf{y}\mid\tau,\theta_{L},\theta_{R})$
+\end_inset
+
+ er kjent, mens 
+\begin_inset Formula $p(\tau,\theta_{L},\theta_{R})=n^{-1}1_{\{1,...,n\}}(\tau)g(\theta_{L};a,b)g(\theta_{R};a,b)$
+\end_inset
+
+, hvor 
+\begin_inset Formula $g(x;a,b)$
+\end_inset
+
+ er Gamma
+\begin_inset Formula $(a,b)$
+\end_inset
+
+-tettheten.
+ Skrevet ut får vi
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{b^{2a}}{n\prod_{i=1}^{n}y_{i}!(\Gamma(a))^{2}}\theta_{R}^{\sum_{i=\tau+1}^{n}y_{i}+a-1}\exp(-\theta_{R}(n-\tau+b))\theta_{L}^{\sum_{i=1}^{\tau}y_{i}+a-1}\exp(-\theta_{L}(\tau+b)).
+\]
+
+\end_inset
+
+La 
+\begin_inset Formula $\gamma(x;a,b)$
+\end_inset
+
+ være gammatettheten med parametere 
+\begin_inset Formula $a,b$
+\end_inset
+
+.
+ Da kan vi reformulere tettheten over til
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p(\tau,\theta_{L},\theta_{R}\mid\mathbf{y})\propto\frac{b^{2a}}{n\prod_{i=1}^{n}y_{i}!(\Gamma(a))^{2}}\gamma(\theta_{L},\sum_{i=1}^{\tau}y_{i}+a,\tau+b)\gamma(\theta_{R},\sum_{i=\tau+1}^{n}y_{i}+a,n-\tau+b).\label{eq:full conditional}
+\end{equation}
+
+\end_inset
+
+Vi kan identifisere de ulike betingede fordelingene ved å finne proporsjonalitet
+skonstanter.
+ For å finne 
+\begin_inset Formula $p(\tau\mid\mathbf{y})$
+\end_inset
+
+ integrerer vi ut 
+\begin_inset Formula $\theta_{L},\theta_{R}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(\tau\mid\mathbf{y})\propto\frac{b^{2a}}{n\prod_{i=1}^{n}y_{i}!(\Gamma(a))^{2}}\frac{\Gamma(\sum_{i=1}^{\tau}y_{i}+a)}{(\tau+b)^{\sum_{i=1}^{\tau}y_{i}+a}}\frac{\Gamma(\sum_{i=\tau+1}^{n}y_{i}+a)}{(n-\tau+b)^{\sum_{i=\tau+1}^{n}y_{i}+a}},
+\]
+
+\end_inset
+
+så 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(\mathbf{y})\propto\sum_{\tau=1}^{n}\left[\frac{b^{2a}}{n\prod_{i=1}^{n}y_{i}!(\Gamma(a))^{2}}\frac{\Gamma(\sum_{i=1}^{\tau}y_{i}+a)}{(\tau+b)^{\sum_{i=1}^{\tau}y_{i}+a}}\frac{\Gamma(\sum_{i=\tau+1}^{n}y_{i}+a)}{(n-\tau+b)^{\sum_{i=\tau+1}^{n}y_{i}+a}}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Når 
+\begin_inset Formula $(a,b)=(1,1)$
+\end_inset
+
+ blir dette til
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(\tau\mid\mathbf{y})\propto\frac{1}{n\prod_{i=1}^{n}y_{i}!}\frac{\Gamma(\sum_{i=1}^{\tau}y_{i}+1)}{(\tau+1)^{\sum_{i=1}^{\tau}y_{i}+1}}\frac{\Gamma(\sum_{i=\tau+1}^{n}y_{i}+1)}{(n-\tau+1)^{\sum_{i=\tau+1}^{n}y_{i}+1}}.
+\]
+
+\end_inset
+
+Det går raskt å beregne denne fordelinga 
+\begin_inset Formula $\mathtt{R}$
+\end_inset
+
+.
+ Her tar vi også med posterioren hvor 
+\begin_inset Formula $(a,b)=(2,10)$
+\end_inset
+
+ for å illustrere at andre ting kan skje.
+ Her anslås bruddpunktet å være der hvor dataene slutter å ha verdier større
+ enn 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Topppunktet 
+\begin_inset Formula $\tau\approx22$
+\end_inset
+
+ svarer heller til en mindre dramatisk endring i 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Bayeseksamen/Posterior(1,1).pdf
+	scale 35
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Bayeseksamen/Posterior(2,10).pdf
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+(venstre) Posterioren 
+\begin_inset Formula $p(\tau\mid\mathbf{y})$
+\end_inset
+
+, hvor 
+\begin_inset Formula $\theta_{L},\theta_{R}$
+\end_inset
+
+ er uavhengig 
+\begin_inset Formula $\exp(1)$
+\end_inset
+
+-fordelte og 
+\begin_inset Formula $\tau$
+\end_inset
+
+ er diskret uniform på 
+\begin_inset Formula $1,...,51.$
+\end_inset
+
+ (høyre) Samme posterior, hvor 
+\begin_inset Formula $\theta_{L},\theta_{R}$
+\end_inset
+
+ er uavhengig 
+\begin_inset Formula $\mbox{Gamma}(2,10)$
+\end_inset
+
+-fordelte.
+ Eksponensialprioren legger all vekta rundt bumpen i likelihooden omkring
+ 
+\begin_inset Formula $\tau=20$
+\end_inset
+
+, mens 
+\begin_inset Formula $\mbox{Gamma}(2,10)$
+\end_inset
+
+ finner det for godt å priorietere det lokale maksimumet omkring 
+\begin_inset Formula $\tau=45$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+f)
+\end_layout
+
+\begin_layout Standard
+Om 
+\begin_inset Formula $(\theta_{L}^{1},\theta_{R}^{1}),(\theta_{L}^{2},\theta_{R}^{2}),...,(\theta_{L}^{N},\theta_{R}^{N})$
+\end_inset
+
+s er en trekning fra 
+\begin_inset Formula $p(\theta_{L},\theta_{R}\mid\mathbf{y})$
+\end_inset
+
+ kan vi approksimere fordelingen til 
+\begin_inset Formula $\frac{\theta_{L}}{\theta_{R}}\mid\mathbf{y}$
+\end_inset
+
+ med den empiriske fordelinga til 
+\begin_inset Formula $\left(\frac{\theta_{L}^{i}}{\theta_{R}^{i}}\right)_{i=1}^{n}$
+\end_inset
+
+.
+ Som et første steg bruker vi Metropolis-Hastings for å finne fordelingen
+ 
+\begin_inset Formula $p(\theta_{L},\theta_{R},\tau\mid\mathbf{y})$
+\end_inset
+
+.
+ Dette virker som et naturlig valg, ettersom de komplette betinga fordelingene
+ ikke er spesielt pene.
+ 
+\end_layout
+
+\begin_layout Subsection*
+g)
+\end_layout
+
+\begin_layout Standard
+Vi reparametriserer slik at 
+\begin_inset Formula $\gamma=\frac{\theta_{R}}{\theta_{L}}$
+\end_inset
+
+ og 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(\gamma,\theta_{L}\tau,\mathbf{y})=\exp(-\gamma b)\gamma^{a-1}\frac{b^{a}}{n\prod_{i=1}^{n}y_{i}!\Gamma(a)}(\gamma\theta_{L})^{\sum_{i=\tau+1}^{n}y_{i}+a-1}\exp(-\theta_{L}\gamma(n-\tau+b))\theta_{L}^{\sum_{i=1}^{\tau}y_{i}+a-1}\exp(-\theta_{L}(\tau+b)).
+\]
+
+\end_inset
+
+Nå kan vi integrere ut 
+\begin_inset Formula $\theta_{L}$
+\end_inset
+
+ ved hjelp av observasjonen 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\exp(-\theta_{L}\gamma(n-\tau+b))\theta_{L}^{\sum_{i=1}^{n}y_{i}+a-2}\exp(-\theta_{L}(\tau+b) & =\\
+\exp(-\theta_{L}(\gamma(n-\tau+b)+\tau+b))\theta_{L}^{\sum_{i=1}^{n}y_{i}+a-2},
+\end{align*}
+
+\end_inset
+
+som er proporsjonal med 
+\begin_inset Formula $\mbox{Gamma}(\gamma(n-\tau+b)+\tau+b),\sum_{i=1}^{n}y_{i}+a-1)$
+\end_inset
+
+.
+ Altså blir
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(\gamma,\tau,\mathbf{y})=\frac{b^{a}\Gamma(\sum_{i=1}^{n}y_{i}+a-1)\exp(-\gamma b)\gamma^{\sum_{i=\tau+1}^{n}y_{i}+2a-2}}{n\prod_{i=1}^{n}y_{i}!\Gamma(a)\left(\gamma(n-\tau+b)+\tau+b\right)^{\sum_{i=1}^{n}y_{i}+a-1}}.
+\]
+
+\end_inset
+
+Å integrere vekk 
+\begin_inset Formula $\tau$
+\end_inset
+
+ er bare å summere, så
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(\gamma\mid\mathbf{y})\propto\sum_{\tau=1}^{n}\left[\frac{b^{a}\Gamma(\sum_{i=1}^{n}y_{i}+a-1)\exp(-\gamma b)\gamma^{\sum_{i=\tau+1}^{n}y_{i}+2a-2}}{n\prod_{i=1}^{n}y_{i}!\Gamma(a)\left(\gamma(n-\tau+b)+\tau+b\right)^{\sum_{i=1}^{n}y_{i}+a-1}}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Det er neppe lett å finne proporsjonalitetskonstanten 
+\begin_inset Formula $p(\mathbf{y})$
+\end_inset
+
+ analytisk, men det bør gå numerisk.
+\end_layout
+
+\end_body
+\end_document
